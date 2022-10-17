@@ -1,5 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { SnippetsTwoTone } from '@ant-design/icons';
+import {
+  AppstoreTwoTone,
+  CheckSquareTwoTone,
+  ClockCircleTwoTone,
+  FireTwoTone,
+  FolderTwoTone,
+  HighlightTwoTone,
+  PlusSquareTwoTone,
+} from '@ant-design/icons';
 import { Space } from 'antd';
 import React from 'react';
 
@@ -16,14 +24,16 @@ const SystemOperate = () => {
 };
 
 const CommonCard = ({ data }: any) => {
+  if (!data) return null;
+
   return (
     <main className="mt-4">
       <section className="text-gray-400 text-xs">{data.title}</section>
       <section>
         {data.children?.map(({ icon, title }: any) => (
           <div className="flex items-center mt-2" key={title}>
-            <SnippetsTwoTone className="mr-2" />
-            <span>{title}</span>
+            {icon || <FolderTwoTone />}
+            <span className="ml-2">{title}</span>
           </div>
         ))}
       </section>
@@ -57,16 +67,84 @@ const HeaderMenu = () => {
   );
 };
 
+const MainContent = () => {
+  const mainContentData = [
+    {
+      folder: {
+        title: '文件夹',
+        children: [
+          { icon: '', title: '公共' },
+          { icon: '', title: '图片' },
+          { icon: '', title: '文稿' },
+          { icon: '', title: '下载' },
+          { icon: '', title: '音乐' },
+          { icon: '', title: '应用程序' },
+          { icon: '', title: '影片' },
+          { icon: '', title: '桌面' },
+          { icon: '', title: 'Nutstores Files' },
+          { icon: '', title: 'Parallels' },
+          { icon: '', title: 'Zotero' },
+        ],
+      },
+      file: {
+        title: '开发者',
+        children: [
+          { icon: '', title: '.bashrc' },
+          { icon: '', title: '.logseq.zip' },
+          { icon: '', title: '.wakatime.log' },
+          { icon: '', title: '.yarnrc' },
+          { icon: '', title: '.zshrc' },
+        ],
+      },
+    },
+    {
+      folder: {
+        title: '文件夹',
+        children: [
+          { icon: '', title: '公共' },
+          { icon: '', title: '图片' },
+          { icon: '', title: '文稿' },
+          { icon: '', title: '下载' },
+          { icon: '', title: '音乐' },
+          { icon: '', title: '应用程序' },
+          { icon: '', title: '影片' },
+          { icon: '', title: '桌面' },
+          { icon: '', title: 'Nutstores Files' },
+          { icon: '', title: 'Parallels' },
+          { icon: '', title: 'Zotero' },
+        ],
+      },
+      file: {
+        title: '开发者',
+        children: [
+          { icon: '', title: '.bashrc' },
+          { icon: '', title: '.logseq.zip' },
+          { icon: '', title: '.wakatime.log' },
+          { icon: '', title: '.yarnrc' },
+          { icon: '', title: '.zshrc' },
+        ],
+      },
+    },
+  ];
+  return (
+    <main className="flex">
+      {mainContentData.map((data) => (
+        <CommonCard key={data.folder} data={data} />
+      ))}
+    </main>
+  );
+};
+
 export default function index() {
   const leftMenuData = [
     {
       title: '个人收藏',
       children: [
-        { icon: '', title: '文稿' },
-        { icon: '', title: '桌面' },
-        { icon: '', title: '最近使用' },
-        { icon: '', title: '应用程序' },
-        { icon: '', title: '下载' },
+        { icon: <CheckSquareTwoTone />, title: '文稿' },
+        { icon: <PlusSquareTwoTone />, title: '桌面' },
+        { icon: <ClockCircleTwoTone />, title: '最近使用' },
+        { icon: <HighlightTwoTone />, title: '应用程序' },
+        { icon: <AppstoreTwoTone />, title: '下载' },
       ],
     },
     {
@@ -75,11 +153,11 @@ export default function index() {
     {
       title: '标签',
       children: [
-        { icon: '', title: '配置文件' },
-        { icon: '', title: '红色' },
-        { icon: '', title: '橙色' },
-        { icon: '', title: '黄色' },
-        { icon: '', title: '绿色' },
+        { icon: <FolderTwoTone />, title: '配置文件' },
+        { icon: <FireTwoTone />, title: '红色' },
+        { icon: <FireTwoTone />, title: '橙色' },
+        { icon: <FolderTwoTone />, title: '黄色' },
+        { icon: <FolderTwoTone />, title: '绿色' },
       ],
     },
   ];
@@ -98,7 +176,9 @@ export default function index() {
         <div className="heder border border-green-500">
           <HeaderMenu />
         </div>
-        <div className="main">main</div>
+        <div className="main">
+          <MainContent />
+        </div>
       </section>
     </main>
   );
