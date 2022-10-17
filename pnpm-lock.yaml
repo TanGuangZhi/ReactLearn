@@ -4,6 +4,7 @@ specifiers:
   '@ant-design/icons': ^4.7.0
   '@ant-design/pro-components': ^2.0.1
   '@babel/runtime': 7.13.8
+  '@types/lodash': ^4.14.186
   '@types/react': ^18.0.0
   '@types/react-dom': ^18.0.0
   '@umijs/max': ^4.0.24
@@ -51,6 +52,7 @@ dependencies:
 
 devDependencies:
   '@babel/runtime': 7.13.8
+  '@types/lodash': 4.14.186
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
   husky: 8.0.1
@@ -3510,6 +3512,10 @@ packages:
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: false
+
+  /@types/lodash/4.14.186:
+    resolution: {integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==}
+    dev: true
 
   /@types/minimatch/5.1.2:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
