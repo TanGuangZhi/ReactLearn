@@ -27,7 +27,7 @@ const routes = [
   ['14 UsersLayout', 'UsersLayout'],
   ['15 MyRouter', 'MyRouter'],
   ['15 NestedRouting', 'NestedRouting'],
-  ['15 TabsPage', 'TabsPage', '/:activeTab?'],
+  // ['15 TabsPage', 'TabsPage', '/:activeTab?'],
   ['15 RouterAuth', 'RouterAuth'],
   ['16 LazyLoad', 'LazyLoad'],
   ['19 Debounce', 'Debounce'],
