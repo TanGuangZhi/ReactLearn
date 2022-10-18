@@ -70,8 +70,19 @@ export default defineConfig({
 
     {
       name: 'YeahMyKanBan',
-      path: '/YeahMyKanBan/FinderSimulate',
-      component: './YeahMyKanBan/FinderSimulate',
+      path: '/yeahMyKanBan',
+      routes: [
+        {
+          name: 'KanBan',
+          path: 'kanBan',
+          component: './YeahMyKanBan/KanBan',
+        },
+        {
+          name: 'FinderSimulate',
+          path: 'finderSimulate',
+          component: './YeahMyKanBan/FinderSimulate',
+        },
+      ],
     },
 
     {
@@ -82,6 +93,7 @@ export default defineConfig({
   ],
 
   mfsu: { strategy: 'normal' },
+
   npmClient: 'pnpm',
   tailwindcss: {},
   // 让所有 pages 下的 _mock.ts 文件成为 mock 文件
