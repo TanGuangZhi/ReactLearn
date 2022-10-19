@@ -73,6 +73,11 @@ export default defineConfig({
       path: '/yeahMyKanBan',
       routes: [
         {
+          name: 'MyKanBan',
+          path: 'myKanBan',
+          component: './YeahMyKanBan/MyKanBan',
+        },
+        {
           name: 'KanBan',
           path: 'kanBan',
           component: './YeahMyKanBan/KanBan',

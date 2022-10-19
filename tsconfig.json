@@ -1,3 +1,9 @@
 {
-  "extends": "./src/.umi/tsconfig.json"
+  "extends": "./src/.umi/tsconfig.json",
+  "suppressImplicitAnyIndexErrors": true,
+  "noImplicitAny": false,
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true
+  }
 }
