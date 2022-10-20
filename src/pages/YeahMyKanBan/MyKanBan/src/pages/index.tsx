@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 
 export default function index() {
   const [showAddNewCard, setShowAddNewCard] = useState(false)
-  const [isAdmin, setIsAdmin]: any = useState(false)
+  const [isEdit, setIsEdit]: any = useState(false)
   const [dataList, setDataList]: any = useState({
     todoList: [
       { title: '开发任务-1', status: '2022-05-22 18:15' },
@@ -30,7 +30,7 @@ export default function index() {
     return (
       <section className="bg-slate-700 text-white h-20 flex justify-center items-center  ">
         <div>My KanBan</div>
-        <EditOutlined />
+        <EditOutlined onClick={() => setIsEdit((data) => !data)} />
       </section>
     )
   }
@@ -39,13 +39,13 @@ export default function index() {
     return (
       <section className="flex justify-between">
         {_.map(dataList, (value, key) => (
-          <KanBanColumn title={key} data={value} key={key} />
+          <KanBanColumn title={key} columnDataList={value} key={key} />
         ))}
       </section>
     )
   }
 
-  const KanBanColumn = ({ title, data }: any) => {
+  const KanBanColumn = ({ title, columnDataList }: any) => {
     const titleShow = (data) => {
       return data === 'todoList' ? (
         <>
@@ -65,30 +65,41 @@ export default function index() {
     return (
       <section className="border flex-auto p-4">
         <div className="text-center border-b-2 mb-4">{titleShow(title)}</div>
-        {data.map((item: any) => (
-          <KanBanCard data={item} key={item.title} />
+        {columnDataList.map((item: any) => (
+          <KanBanCard cardData={item} key={item.title} />
         ))}
-        {showAddNewCard && <AddNewCard />}
+        {showAddNewCard && title === 'todoList' && <AddNewCard />}
       </section>
     )
   }
 
-  const KanBanCard = ({ data }: any) => {
+  const KanBanCard = ({ cardData }: any) => {
+    const handleDragStart = (evt) => {
+      evt.dataTransfer.effectAllowed = 'move'
+      evt.dataTransfer.setData('text/plain', cardData.title)
+      //  onDragStart && onDragStart(evt)
+    }
     return (
-      <section className="border rounded mb-4 p-2">
+      <section
+        className="border rounded mb-4 p-2"
+        draggable
+        onDragStart={handleDragStart}
+      >
         <div className="flex justify-between items-center">
-          <span>{data.title}</span>
-          <DeleteOutlined
-            onClick={() => {
-              dataList.todoList = dataList.todoList.filter(
-                (item: any) => item.title !== data.title,
-              )
+          <span>{cardData.title}</span>
+          {isEdit && (
+            <DeleteOutlined
+              onClick={() => {
+                dataList.todoList = dataList.todoList.filter(
+                  (item: any) => item.title !== cardData.title,
+                )
 
-              setDataList({ ...dataList })
-            }}
-          />
+                setDataList({ ...dataList })
+              }}
+            />
+          )}
         </div>
-        <div className="text-right mt-2">{data.status}</div>
+        <div className="text-right mt-2">{cardData.status}</div>
       </section>
     )
   }
