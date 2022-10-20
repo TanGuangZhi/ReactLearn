@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import React, { useState } from 'react';
-import { KanbanCard } from './KanbanCard';
-import { KanbanNewCard } from './KanbanNewCard';
+import { css } from '@emotion/react'
+import React, { useState } from 'react'
+import { KanbanCard } from './KanbanCard'
+import { KanbanNewCard } from './KanbanNewCard'
 
 const kanbanColumnStyles = css`
   flex: 1 1;
@@ -35,7 +35,7 @@ const kanbanColumnStyles = css`
     padding: 0;
     overflow: auto;
   }
-`;
+`
 
 export const KanbanColumn = ({
   children,
@@ -50,41 +50,42 @@ export const KanbanColumn = ({
   setIsDragSource = () => {},
   setIsDragTarget = () => {},
 }) => {
-  const [showAdd, setShowAdd] = useState(false);
+  const [showAdd, setShowAdd] = useState(false)
   const handleAdd = (evt) => {
-    setShowAdd(true);
-  };
+    setShowAdd(true)
+  }
 
   const handleSubmit = (newCard) => {
-    onAdd && onAdd(newCard);
-    setShowAdd(false);
-  };
+    onAdd && onAdd(newCard)
+    setShowAdd(false)
+  }
   return (
     <section
       onDragStart={() => setIsDragSource(true)}
       onDragOver={(evt) => {
-        evt.preventDefault();
-        evt.dataTransfer.dropEffect = 'move';
-        setIsDragTarget(true);
+        evt.preventDefault()
+        evt.dataTransfer.dropEffect = 'move'
+        setIsDragTarget(true)
       }}
       onDragLeave={(evt) => {
-        evt.preventDefault();
-        evt.dataTransfer.dropEffect = 'none';
-        setIsDragTarget(false);
+        evt.preventDefault()
+        evt.dataTransfer.dropEffect = 'none'
+        setIsDragTarget(false)
       }}
       onDrop={(evt) => {
-        evt.preventDefault();
-        onDrop && onDrop(evt);
+        evt.preventDefault()
+        onDrop && onDrop(evt)
       }}
       onDragEnd={(evt) => {
-        evt.preventDefault();
-        setIsDragSource(false);
-        setIsDragTarget(false);
+        evt.preventDefault()
+        setIsDragSource(false)
+        setIsDragTarget(false)
       }}
       css={css`
         ${kanbanColumnStyles}
         background-color: ${bgColor};
       `}
+      data-testid="kanban-column"
     >
       <h2>
         {title}
@@ -101,7 +102,7 @@ export const KanbanColumn = ({
           <KanbanCard
             key={item.title}
             onDragStart={() => {
-              setDraggedItem && setDraggedItem(item);
+              setDraggedItem && setDraggedItem(item)
             }}
             onRemove={onRemove}
             {...item}
@@ -109,5 +110,5 @@ export const KanbanColumn = ({
         ))}
       </ul>
     </section>
-  );
-};
+  )
+}

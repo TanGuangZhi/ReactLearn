@@ -1,28 +1,28 @@
-import React, { useEffect, useRef, useState } from "react";
-import { css } from "@emotion/react";
-import { kanbanCardStyles, kanbanCardTitleStyles } from "./KanbanCard";
+import { css } from '@emotion/react'
+import React, { useEffect, useRef, useState } from 'react'
+import { kanbanCardStyles, kanbanCardTitleStyles } from './KanbanCard'
 
 export const KanbanNewCard = ({ onSubmit }) => {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('')
 
   const handleChange = (evt) => {
-    setTitle(evt.target.value);
-  };
+    setTitle(evt.target.value)
+  }
 
   const handleKeyDown = (evt) => {
-    if (evt.key === "Enter") {
-      onSubmit({ title, status: new Date().toString() });
+    if (evt.key === 'Enter') {
+      onSubmit({ title, status: new Date().toString() })
     }
-  };
+  }
 
-  const inputElem = useRef(null);
+  const inputElem = useRef(null)
 
   useEffect(() => {
-    inputElem.current.focus();
-  }, []);
+    inputElem.current.focus()
+  }, [])
 
   return (
-    <li css={kanbanCardStyles}>
+    <li css={kanbanCardStyles} data-testid="add-new-card">
       <h3>添加新卡片</h3>
       <div
         css={css`
@@ -42,5 +42,5 @@ export const KanbanNewCard = ({ onSubmit }) => {
         />
       </div>
     </li>
-  );
-};
+  )
+}
