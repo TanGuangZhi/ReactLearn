@@ -1,7 +1,9 @@
 import { Liquid, WordCloud } from '@ant-design/charts'
-import { Layout, Row, Typography } from 'antd'
+import { EllipsisOutlined } from '@ant-design/icons'
+import { ProCard, StatisticCard } from '@ant-design/pro-components'
+import { Layout } from 'antd'
+import RcResizeObserver from 'rc-resize-observer'
 import { default as React, useEffect, useState } from 'react'
-import styles from './Guide.less'
 
 interface Props {
   name: string
@@ -70,19 +72,80 @@ const DemoLiquid = () => {
 // 脚手架示例组件
 const Guide: React.FC<Props> = (props) => {
   const { name } = props
+  const [responsive, setResponsive] = useState(false)
   return (
     <Layout>
-      <Row>
-        <Typography.Title level={3} className={styles.title}>
-          放几张酷炫的图表
-        </Typography.Title>
-        <section className="h-64">
+      <ProCard title="放几张图表" ghost gutter="8">
+        <ProCard colSpan={12} layout="center" hoverable bordered>
           <DemoWordCloud />
-        </section>
-        <section className="h-64">
-          <DemoLiquid />
-        </section>
-      </Row>
+        </ProCard>
+        <ProCard colSpan={12} layout="center" hoverable bordered>
+          <StatisticCard
+            title="大盘趋势"
+            tip="大盘说明"
+            style={{ maxWidth: 480 }}
+            extra={<EllipsisOutlined />}
+            chart={
+              <img
+                src="https://gw.alipayobjects.com/zos/alicdn/a-LN9RTYq/zhuzhuangtu.svg"
+                alt="柱状图"
+                width="100%"
+              />
+            }
+          />
+        </ProCard>
+      </ProCard>
+      <ProCard title="卡片组展开" ghost gutter={8} collapsible>
+        <RcResizeObserver
+          key="resize-observer"
+          onResize={(offset) => {
+            setResponsive(offset.width < 596)
+          }}
+        >
+          <ProCard
+            title="复杂切分"
+            extra="2019年9月28日"
+            bordered
+            headerBordered
+            collapsible
+            split={responsive ? 'horizontal' : 'vertical'}
+          >
+            <ProCard split="horizontal">
+              <ProCard split="horizontal">
+                <ProCard split={responsive ? 'horizontal' : 'vertical'}>
+                  <ProCard title="昨日全部流量">123</ProCard>
+                  <ProCard title="本月累计流量">234</ProCard>
+                  <ProCard title="今年累计流量">345</ProCard>
+                </ProCard>
+                <ProCard split="vertical">
+                  <ProCard title="运行中试验">12/56</ProCard>
+                  <ProCard title="历史试验总数">134 个</ProCard>
+                </ProCard>
+              </ProCard>
+              <ProCard title="流量趋势">
+                <div>图表</div>
+                <div>图表</div>
+                <div>图表</div>
+                <div>图表</div>
+                <div>图表</div>
+              </ProCard>
+            </ProCard>
+            <ProCard title="流量占用情况">右侧内容</ProCard>
+          </ProCard>
+        </RcResizeObserver>
+        <ProCard
+          tabs={{
+            type: 'card',
+          }}
+        >
+          <ProCard.TabPane key="tab1" tab="产品一">
+            内容一
+          </ProCard.TabPane>
+          <ProCard.TabPane key="tab2" tab="产品二">
+            内容二
+          </ProCard.TabPane>
+        </ProCard>
+      </ProCard>
     </Layout>
   )
 }

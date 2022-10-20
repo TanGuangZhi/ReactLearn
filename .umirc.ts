@@ -1,4 +1,4 @@
-import { defineConfig } from '@umijs/max';
+import { defineConfig } from '@umijs/max'
 
 const routes = [
   ['01 Counter', 'Counter'],
@@ -31,7 +31,7 @@ const routes = [
   ['15 RouterAuth', 'RouterAuth'],
   ['16 LazyLoad', 'LazyLoad'],
   ['19 Debounce', 'Debounce'],
-];
+]
 
 export default defineConfig({
   antd: {},
@@ -63,9 +63,45 @@ export default defineConfig({
         return {
           name: item[0],
           path: item[0].replace(/ /g, '/'),
-          component: './' + item[0].replace(/ /g, '/'),
-        };
+          component: './ReactHook/' + item[0].replace(/ /g, '/'),
+        }
       }),
+    },
+    {
+      name: 'LayoutDemo',
+      path: '/layoutDemo',
+      // component: './Access',
+      routes: [
+        {
+          name: 'CheckCard',
+          path: 'checkCard',
+          component: './LayoutDemo/CheckCard',
+        },
+      ],
+    },
+    {
+      name: 'DataShow',
+      path: '/dataShow',
+      // component: './Access',
+      routes: [
+        {
+          name: 'ProTable',
+          path: 'proTable',
+          component: './DataShow/ProTable',
+        },
+      ],
+    },
+    {
+      name: 'DataEntry',
+      path: '/dataEntry',
+      // component: './Access',
+      routes: [
+        {
+          name: 'LoginForm',
+          path: 'loginForm',
+          component: './DataEntry/LoginForm',
+        },
+      ],
     },
 
     {
@@ -89,12 +125,6 @@ export default defineConfig({
         },
       ],
     },
-
-    {
-      name: ' CRUD 示例',
-      path: '/table',
-      component: './Table',
-    },
   ],
 
   mfsu: { strategy: 'normal' },
@@ -105,6 +135,6 @@ export default defineConfig({
   mock: {
     include: ['src/pages/**/_mock.ts'],
   },
-});
+})
 
-console.log('  '.replace(/ /g, '/'));
+console.log('  '.replace(/ /g, '/'))
