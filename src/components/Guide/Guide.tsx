@@ -75,7 +75,7 @@ const Guide: React.FC<Props> = (props) => {
   const [responsive, setResponsive] = useState(false)
   return (
     <Layout>
-      <ProCard title="放几张图表" ghost gutter="8">
+      <ProCard title="放几张没啥用图表填补下空缺的首页" ghost gutter="8">
         <ProCard colSpan={12} layout="center" hoverable bordered>
           <DemoWordCloud />
         </ProCard>
