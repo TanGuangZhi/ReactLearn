@@ -15,7 +15,7 @@
   "dependencies": {
     "@ant-design/charts": "^1.4.2",
     "@ant-design/icons": "^4.7.0",
-    "@ant-design/pro-components": "^2.0.1",
+    "@ant-design/pro-components": "^2.3.23",
     "@emotion/react": "^11.10.4",
     "@umijs/max": "^4.0.24",
     "ahooks": "^3.7.1",

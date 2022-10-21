@@ -1,7 +1,7 @@
 import { Liquid, WordCloud } from '@ant-design/charts'
 import { EllipsisOutlined } from '@ant-design/icons'
 import { ProCard, StatisticCard } from '@ant-design/pro-components'
-import { Layout } from 'antd'
+import { Button, Layout } from 'antd'
 import RcResizeObserver from 'rc-resize-observer'
 import { default as React, useEffect, useState } from 'react'
 
@@ -75,7 +75,7 @@ const Guide: React.FC<Props> = (props) => {
   const [responsive, setResponsive] = useState(false)
   return (
     <Layout>
-      <ProCard title="放几张没啥用图表填补下空缺的首页" ghost gutter="8">
+      <ProCard title="放几张没啥用图表填补下空缺的首页" ghost gutter={8}>
         <ProCard colSpan={12} layout="center" hoverable bordered>
           <DemoWordCloud />
         </ProCard>
@@ -140,6 +140,7 @@ const Guide: React.FC<Props> = (props) => {
         >
           <ProCard.TabPane key="tab1" tab="产品一">
             内容一
+            <Button type="primary">test</Button>
           </ProCard.TabPane>
           <ProCard.TabPane key="tab2" tab="产品二">
             内容二
